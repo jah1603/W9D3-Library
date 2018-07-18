@@ -64,7 +64,8 @@ public class Book {
         this.onLoan = onLoan;
     }
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "borrower_id", nullable = false)
     public Borrower getCurrentBorrower() {
         return currentBorrower;
     }

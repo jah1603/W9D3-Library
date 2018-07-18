@@ -41,8 +41,7 @@ public class Borrower {
         this.name = name;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", nullable = false)
+    @OneToMany(mappedBy = "currentBorrower", fetch = FetchType.LAZY)
     public List<Book> getCollection() {
         return collection;
     }
