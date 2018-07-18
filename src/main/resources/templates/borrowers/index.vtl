@@ -1,0 +1,27 @@
+<p class="pageHeader"> All borrowers</p>
+
+<div>
+    <a href="/borrowers/new" class="button center">New borrower</a>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+
+        </tr>
+        #foreach($borrower in $borrowers)
+        <tr>
+            <td>$borrower.getName()</td>
+            <td>
+                <a href="/borrowers/edit/$borrower.getId()" class="button center">Edit borrower</a>
+            </td>
+            <form action="/borrowers/delete/$borrower.getId()" method="post">
+                <td>
+                    <input type="submit" value="Delete">
+                </td>
+            </form>
+        </tr>
+        #end
+    </table>
+</div>
