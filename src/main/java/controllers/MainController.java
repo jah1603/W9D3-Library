@@ -14,8 +14,8 @@ public class MainController {
 
         Seeds.seedData();
 
-        BooksController managersController = new BooksController();
-        BorrowersController engineersController = new BorrowersController();
+        BooksController booksController = new BooksController();
+        BorrowersController borrowersController = new BorrowersController();
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap();

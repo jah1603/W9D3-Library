@@ -1,0 +1,35 @@
+<p class="pageHeader"> All books</p>
+
+<div>
+    <a href="/books/new" class="button center">New book</a>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Availability</th>
+            <th>Borrower</th>
+            <th>Genre</th>
+
+        </tr>
+        #foreach($book in $books)
+        <tr>
+            <td>$book.getTitle()</td>
+            <td>$book.getAuthor()</td>
+            <td>$book.isOnLoan()</td>
+            <td>$book.getCurrentBorrower().getName()</td>
+            <td>$book.getGenre()</td>
+            <td>
+                <a href="/books/edit/$book.getId()" class="button center">Edit book</a>
+            </td>
+            <form action="/books/delete/$books.getId()" method="post">
+                <td>
+                    <input type="submit" value="Delete">
+                </td>
+            </form>
+        </tr>
+        #end
+    </table>
+</div>
