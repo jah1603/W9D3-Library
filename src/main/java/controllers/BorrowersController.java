@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class BorrowersController {
 
@@ -38,5 +39,16 @@ public class BorrowersController {
             model.put("template", "templates/borrowers/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+        post("/borrowers/delete/:id", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            int borrowerId = Integer.parseInt(req.params(":id"));
+            Borrower borrowerToDelete = DBHelper.find(borrowerId, Borrower.class);
+            DBHelper.delete(borrowerToDelete);
+
+            res.redirect("/borrowers");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 }

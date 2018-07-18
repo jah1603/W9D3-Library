@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class BooksController {
 
@@ -38,6 +39,16 @@ public class BooksController {
             model.put("books", collection);
             model.put("template", "templates/books/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/books/delete/:id", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            int bookId = Integer.parseInt(req.params(":id"));
+            Book bookToDelete = DBHelper.find(bookId, Book.class);
+            DBHelper.delete(bookToDelete);
+
+            res.redirect("/books");
+            return null;
         }, new VelocityTemplateEngine());
     }
 
