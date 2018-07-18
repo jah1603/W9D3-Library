@@ -6,7 +6,9 @@ import models.Genre;
 
 public class Seeds {
 
-    public static void main(String[] args) {
+
+
+    public static void seedData(){
         DBHelper.deleteAll(Book.class);
         DBHelper.deleteAll(Borrower.class);
 
