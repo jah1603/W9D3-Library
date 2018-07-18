@@ -2,17 +2,21 @@ package models;
 
 public enum Genre {
 
-    HISTORY,
-    POLITICS,
-    SPORT,
-    ROMANCE,
-    TEEN,
-    LITERARY,
-    MUSIC,
-    HEALTH,
-    LIFESTYLE,
-    AUTOBIOGRAPHY;
+    HISTORY("History"),
+    POLITICS("Politics"),
+    SPORT("Sport"),
+    ROMANCE("Romance"),
+    TEEN("Teen");
 
+    private final String title;
+
+    Genre(String title) {
+        this.title = title;
+    }
+
+    public String getTitleGenre() {
+        return this.title;
+    }
 
 
 
